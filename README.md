@@ -12,14 +12,15 @@ assignment 2
 
 截图:
 
+<img src="\screenshot\login.PNG" style="zoom:50%;" />
+
 ![main](/screenshot/main.PNG)
 
-![creatr note](/screenshot/create note.PNG)
+![creatr note](/screenshot/create_note.PNG)
 
-![view note](/screenshot/view note.PNG)
+![view note](/screenshot/view_note.PNG)
 
-![view private note](/screenshot/view private note.PNG)
-
+![view private note](/screenshot/view_private_note.PNG)
 
 
 ### 涉及的工具:
