@@ -1,0 +1,6 @@
+<?php
+require "init.php";
+// if(! isset($_SESSION["user"])){
+//     header("Location: main.php");
+// }
+?>
