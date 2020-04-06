@@ -12,7 +12,6 @@ assignment 2
 
 截图:
 
-<img src="\screenshot\login.PNG" style="zoom:50%;" />
 
 ![main](/screenshot/main.PNG)
 
