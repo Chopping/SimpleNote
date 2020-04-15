@@ -1,5 +1,8 @@
 <?php
 require "polices.php";
+if(! isset($_SESSION["user"])){
+    header("Location: login.php");
+}
 ?>
 <html>
 
@@ -176,7 +179,7 @@ require "polices.php";
                         var $row = $("<tr>", {
                             class: ""
                         }).prop('id', 'table-row');
-                        $row.append($("<td>").html(index));
+                        $row.append($("<td>").html(index+1));
                         $row.append($("<td>").html(note_list[index].title));
                         $row.append($("<td>").html(note_list[index].state));
                         $row.append($('<td><a href="' + note_list[index].link + '">View it</a></td>'));
@@ -238,7 +241,7 @@ require "polices.php";
                             var $row = $("<tr>", {
                                 class: ""
                             }).prop('id', 'table-row');
-                            $row.append($("<td scope=\"row\">").html(index));
+                            $row.append($("<td scope=\"row\">").html(index+1));
                             $row.append($("<td>").html(note_list[index].title));
                             $row.append($("<td>").html(note_list[index].state));
                             $row.append($('<td><a href="' + note_list[index].link + '">View it</a></td>'));

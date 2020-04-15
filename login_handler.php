@@ -1,8 +1,17 @@
 <?php
 require "polices.php";
+
+$sensitive_words = [';','\'','\"','any','all'];
+
 if (isset($_POST["user_name"]) && isset($_POST["password"])) {
   if(is_null($_POST["user_name"]) || is_null($_POST["password"]) || empty($_POST["password"]) || empty($_POST["user_name"])){
-    die("{\"success\":0,\"msg\":\"empty username or password are not allowed!\"}");
+    die("{\"success\":0,\"msg\":\"empty username or password is not allowed!\"}");
+  }
+
+  foreach ($sensitive_words as $value) {
+    if(strpos($_POST["username"], $value) !== false){
+      die("{\"success\":0,\"msg\":\"empty username or password is not allowed!\"}");
+    }
   }
 
   // Create connection

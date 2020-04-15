@@ -1,5 +1,8 @@
 <?php
 require "polices.php";
+if(! isset($_SESSION["user"])){
+    header("Location: login.php");
+}
 ?>
 <html>
 
@@ -130,6 +133,7 @@ require "polices.php";
 				data: {
 					title: $("#note_title").val(),
 					content: editor.txt.html(),
+					// content: filterXSS(editor.txt.html()),
 					note_key: $("#note_key").val(),
 					p_opt: private_opt ? 1 : 0,
 				},

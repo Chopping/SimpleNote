@@ -11,7 +11,9 @@
         if(isset($_GET['k'])){
             $s_key = $_GET['k'];
             /*value="<?php echo isset($_SESSION['searchKey'])? $_SESSION['searchKey']:''; ?>" */
-            $stmt = $conn->prepare("SELECT note_id, title, is_private as state, enable_search as is_enabled_search FROM notesys.t_notes WHERE username=? and enable_search = 1 and content_plain_text like ? order by last_modified_date"); 
+            $stmt = $conn->prepare("SELECT note_id, title, is_private as state, enable_search as is_enabled_search 
+                FROM notesys.t_notes WHERE username=? and enable_search = 1 and content_plain_text like ? 
+                order by last_modified_date desc"); 
             $param = "%{$s_key}%";
             $stmt->bind_param("ss", $_SESSION['user'],$param);
             $result = $stmt->execute();
@@ -24,7 +26,9 @@
             {
                 $return_data = array();
                 while($row = $resultSet->fetch_assoc()) {
-                    array_push($return_data,["title"=>$row["title"],"state"=>$row["state"]==1?"private":"public","note_id"=>$row["note_id"],"link"=>"view.php?note_id=$row[note_id]","is_enabled_search"=>$row["is_enabled_search"]]);
+                    array_push($return_data,["title"=>$row["title"],"state"=>$row["state"]==1?"private":"public",
+                    "note_id"=>$row["note_id"],"link"=>"view.php?note_id=$row[note_id]",
+                    "is_enabled_search"=>$row["is_enabled_search"]]);
                 }
                 die(json_encode(["data"=>$return_data,"success"=>1]));
             }
@@ -65,7 +69,7 @@
         }
         // 如果只是简单的get
         else{
-            $stmt = $conn->prepare("SELECT note_id, title, is_private as state, enable_search as is_enabled_search FROM notesys.t_notes WHERE username=? order by last_modified_date"); 
+            $stmt = $conn->prepare("SELECT note_id, title, is_private as state, enable_search as is_enabled_search FROM notesys.t_notes WHERE username=? order by last_modified_date desc"); 
             $stmt->bind_param("s", $user);
             $result = $stmt->execute();
             $resultSet = $stmt->get_result();   
